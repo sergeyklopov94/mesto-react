@@ -23,15 +23,35 @@ function App() {
     setSelectedCard({});
   }
 
+  function handleEditProfileClick() {
+    setIsEditProfilePopupOpen(true);
+  }
+  
+  function handleAddPlaceClick() {
+    setIsAddPlacePopupOpen(true);
+  }
+
+  function handleEditAvatarClick() {
+    setIsEditAvatarPopupOpen(true);
+  }
+
+  function handleDeleteClick() {
+    setIsDeleteCardPopupOpen(true);
+  }
+  
+  function handleCardClick({name, link}) {
+    setSelectedCard({name, link});
+  }
+
   return (
     <div className="root" id="root">
       <Header />
       <Main
-        onEditProfile={() => setIsEditProfilePopupOpen(true)}
-        onAddPlace={() => setIsAddPlacePopupOpen(true)}
-        onEditAvatar={() => setIsEditAvatarPopupOpen(true)}
-        onDeleteClick={() => setIsDeleteCardPopupOpen(true)}
-        handleCardClick={() => setSelectedCard}
+        onEditProfile = {handleEditProfileClick}
+        onAddPlace={handleAddPlaceClick}
+        onEditAvatar={handleEditAvatarClick}
+        onDeleteClick={handleDeleteClick}
+        onCardClick={handleCardClick}
       />
       <Footer />
       <PopupWithForm 

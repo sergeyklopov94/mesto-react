@@ -2,7 +2,7 @@ import React from 'react';
 import api from '../utils/api';
 import Card from './Card';
 
-function Main({onEditProfile, onAddPlace, onEditAvatar, handleCardClick, onDeleteClick}) {
+function Main({onEditProfile, onAddPlace, onEditAvatar, onCardClick, onDeleteClick}) {
 
   const [userName, setUserName] = React.useState(null);
   const [userDescription, setUserDescription] = React.useState(null); 
@@ -42,7 +42,7 @@ function Main({onEditProfile, onAddPlace, onEditAvatar, handleCardClick, onDelet
           {cards.map((card) => (
             <Card 
               card={card}
-              onCardClick={handleCardClick()}
+              onCardClick={onCardClick}
               onDeleteClick={onDeleteClick} 
               key={card._id}>
             </Card>
