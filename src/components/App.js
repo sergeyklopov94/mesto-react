@@ -5,6 +5,7 @@ import Footer from './Footer';
 import PopupWithForm from './PopupWithForm';
 import Input from './Input';
 import ImagePopup from './ImagePopup';
+import api from '../utils/api';
 
 function App() {
 
@@ -14,6 +15,8 @@ function App() {
   const [isDeleteCardPopupOpen, setIsDeleteCardPopupOpen] = React.useState(false);
 
   const [selectedCard, setSelectedCard] = React.useState({});
+
+  const [currentUser, setCurrentUser] = React.useState(null);
   
   const closeAllPopups = () => {
     setIsEditProfilePopupOpen(false);
@@ -42,6 +45,16 @@ function App() {
   function handleCardClick({name, link}) {
     setSelectedCard({name, link});
   }
+
+  React.useEffect(() => {
+    api.getUserData()
+      .then(([userData]) => {
+        setCurrentUser(userData);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <div className="root" id="root">
