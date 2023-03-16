@@ -24,7 +24,7 @@ function EditProfilePopup({isOpen, onClose, onUpdateUser}) {
   }, [currentUser]); 
 
 
-  function handleSubmit(evt) {
+  function handleEditProfileSubmit(evt) {
     evt.preventDefault();
     onUpdateUser({
       name,
@@ -40,7 +40,7 @@ function EditProfilePopup({isOpen, onClose, onUpdateUser}) {
       size="l"
       isOpen={isOpen} 
       onClose={onClose}
-      onSubmit={handleSubmit}
+      onSubmit={handleEditProfileSubmit}
     >
       <input className="popup__info"
         type="text"
@@ -50,7 +50,8 @@ function EditProfilePopup({isOpen, onClose, onUpdateUser}) {
         onChange={handleNameChange}
         value={name || ''}
         minLength="2"
-        maxLength="40">
+        maxLength="40"
+        required>
       </input>
       <input className="popup__info"
         type="text"
@@ -60,7 +61,8 @@ function EditProfilePopup({isOpen, onClose, onUpdateUser}) {
         onChange={handleDescriptionChange}
         value={description || ''}
         minLength="2"
-        maxLength="200">
+        maxLength="200"
+        required>
       </input>
     </PopupWithForm>
   )
